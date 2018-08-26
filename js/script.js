@@ -167,6 +167,7 @@ function randomColor() {
 function printQuote () {
   var randomQuote = getRandomQuote(quotes);
   var html = '';
+  var bgColor = randomColor();
   html += '<p class="quote">' + randomQuote.quote;
   html += '</p> <p class="source">' + randomQuote.source;
   html += '<span class="citation">' + randomQuote.citation;
@@ -178,7 +179,8 @@ function printQuote () {
     html += randomQuote.tag + '</span></p>';
   }
   document.getElementById('quote-box').innerHTML = html;
-  document.body.style.backgroundColor = randomColor();
+  document.body.style.backgroundColor = bgColor;
+  document.getElementById('loadQuote').style.backgroundColor = bgColor;
   }
 printQuote();
 
