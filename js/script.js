@@ -143,26 +143,27 @@ var quotes = [
     }
 ]
 
-/* creates a random number based on a the length of the array
-   Returns an array of the quote object from the array based on that random number
-*/
+// creates a random number from 0 up to the limit
 function randomNum(limit) {
   return Math.floor(Math.random() * limit);
 }
 
+//return a random quote object from the array
 function getRandomQuote (array) {
   var random = randomNum(array.length);
   return (array[random]);
 }
 
+//return a random color using rgb values
 function randomColor() {
   var color = 'rgb(' + randomNum(256) + ',' + randomNum(256) + ',' + randomNum(256) + ')';
   return color;
 }
 /*
-  Uses the getRandomQuote function to retreive a random quotes
+  Uses the getRandomQuote function to retreive a random quote
   Concatenates html code and info from the random quote array.
   Prints this information to the quote-box div of the index.html file
+  Changes the background color of page and button using randomColor function
 */
 function printQuote () {
   var randomQuote = getRandomQuote(quotes);
@@ -184,7 +185,7 @@ function printQuote () {
   }
 printQuote();
 
-
+//repeatedly calls the printQuote function, at 25000ms
 var intervalID = window.setInterval(printQuote, 25000);
 
 
