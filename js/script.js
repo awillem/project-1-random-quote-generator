@@ -139,19 +139,27 @@ var quotes = [
       source: 'Peter \'Pan\' Banning',
       citation: 'Hook',
       year: '1991',
-      tag:
-    },
+      tag: ''
+    }
 ]
 
 /* creates a random number based on a the length of the array
    Returns an array of the quote object from the array based on that random number
 */
+function randomNum(limit) {
+  return Math.floor(Math.random() * limit);
+}
+
 function getRandomQuote (array) {
   var random = Math.floor(Math.random() * array.length);
   return (array[random]);
 }
 
-
+function randomColor() {
+  var color = 'rgb(' + randomNum(256) + ',' + randomNum(256) + ',' + randomNum(256) + ')';
+  return color;
+}
+console.log(randomColor());
 /*
   Uses the getRandomQuote function to retreive a random quotes
   Concatenates html code and info from the random quote array.
@@ -171,8 +179,12 @@ function printQuote () {
     html += randomQuote.tag + '</span></p>';
   }
   document.getElementById('quote-box').innerHTML = html;
-}
+  document.body.style.backgroundColor = randomColor();
+  }
 printQuote();
+
+
+var intervalID = window.setInterval(printQuote, 5000);
 
 
 // This event listener will respond to "Show another quote" button clicks
