@@ -151,7 +151,7 @@ function randomNum(limit) {
 }
 
 function getRandomQuote (array) {
-  var random = Math.floor(Math.random() * array.length);
+  var random = randomNum(array.length);
   return (array[random]);
 }
 
@@ -159,7 +159,6 @@ function randomColor() {
   var color = 'rgb(' + randomNum(256) + ',' + randomNum(256) + ',' + randomNum(256) + ')';
   return color;
 }
-console.log(randomColor());
 /*
   Uses the getRandomQuote function to retreive a random quotes
   Concatenates html code and info from the random quote array.
@@ -184,7 +183,7 @@ function printQuote () {
 printQuote();
 
 
-var intervalID = window.setInterval(printQuote, 5000);
+var intervalID = window.setInterval(printQuote, 25000);
 
 
 // This event listener will respond to "Show another quote" button clicks
