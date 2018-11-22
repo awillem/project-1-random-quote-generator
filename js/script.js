@@ -167,6 +167,7 @@ function randomColor() {
   var color = 'rgb(' + randomNum(256) + ',' + randomNum(256) + ',' + randomNum(256) + ')';
   return color;
 }
+console.log("stuff");
 /*
   Uses the getRandomQuote function to retreive a random quote
   Concatenates html code and info from the random quote array.
