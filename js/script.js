@@ -143,6 +143,9 @@ var quotes = [
     }
 ]
 
+//creates a new array that includes all quotes
+let newQuotes = [...quotes];
+
 // creates a random number from 0 up to the limit
 function randomNum(limit) {
   return Math.floor(Math.random() * limit);
@@ -150,8 +153,13 @@ function randomNum(limit) {
 
 //return a random quote object from the array
 function getRandomQuote (array) {
+  
   var random = randomNum(array.length);
-  return (array[random]);
+  var randomQuote = array[random];
+  let index = array.findIndex(quote => quote === randomQuote);
+  newQuotes.splice(index,1);
+  console.log({index});
+  return (randomQuote);
 }
 
 //return a random color using rgb values
@@ -166,7 +174,9 @@ function randomColor() {
   Changes the background color of page and button using randomColor function
 */
 function printQuote () {
-  var randomQuote = getRandomQuote(quotes);
+  var randomQuote = getRandomQuote(newQuotes);
+  console.log({randomQuote});
+  console.log({newQuotes});
   var html = '';
   var bgColor = randomColor();
   html += '<p class="quote">' + randomQuote.quote;
@@ -182,11 +192,14 @@ function printQuote () {
   document.getElementById('quote-box').innerHTML = html;
   document.body.style.backgroundColor = bgColor;
   document.getElementById('loadQuote').style.backgroundColor = bgColor;
+  if(newQuotes.length === 0) {
+    newQuotes = [...quotes];
+  }
   }
 printQuote();
 
 //repeatedly calls the printQuote function, at 25000ms
-var intervalID = window.setInterval(printQuote, 25000);
+/*var intervalID = */window.setInterval(printQuote, 25000);
 
 
 // This event listener will respond to "Show another quote" button clicks
